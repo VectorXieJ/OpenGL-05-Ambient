@@ -103,8 +103,6 @@ void RenderScene()
 // 设置渲染状态
 void SetupRC()
 {
-	// 指定环境光强度
-	GLfloat ambientLight[] = {1.0f, 1.0f, 1.0f, 1.0f};
 	// 启用深度检测
 	glEnable(GL_DEPTH_TEST);
 	// 启用遮挡剔除
@@ -113,10 +111,11 @@ void SetupRC()
 	glFrontFace(GL_CCW);
 	// 启用光照
 	glEnable(GL_LIGHTING);
-	
+	// 指定环境光强度
+	GLfloat ambientLight[] = {1.0f, 1.0f, 1.0f, 1.0f};
 	// 设置光照模式，将ambientLight所指定的RGB强度值应用到环境光
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
-	//
+	// 启用颜色追踪
 	glEnable(GL_COLOR_MATERIAL);
 	// 设置多边形正面的材料属性，追踪glColor
 	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
