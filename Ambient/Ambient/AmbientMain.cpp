@@ -4,6 +4,119 @@
 static GLfloat xRot = 0.0f;
 static GLfloat yRot = 0.0f;
 
+// 设置渲染状态
+void SetupRC()
+{
+	// 启用深度检测
+	glEnable(GL_DEPTH_TEST);
+	// 启用遮挡剔除
+	glEnable(GL_CULL_FACE);
+	// 设置逆时针环绕的一面为正面
+	glFrontFace(GL_CCW);
+	// 启用光照计算
+	glEnable(GL_LIGHTING);
+	// 指定环境光强度（RGBA）
+	GLfloat ambientLight[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	// 设置光照模型，将ambientLight所指定的RGBA强度值应用到环境光
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+	// 启用颜色追踪
+	glEnable(GL_COLOR_MATERIAL);
+	// 设置多边形正面的材料属性，追踪glColor
+	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+	// 指定清除颜色
+	glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
+}
+// 绘制飞机模型
+void RenderPlane()
+{
+	// 三角形图元
+	glBegin(GL_TRIANGLES);
+
+	// 第一种颜色
+	glColor3ub(0, 255, 0);
+
+	glVertex3f(0.0f, 0.0f, 60.0f);
+	glVertex3f(-15.0f, 0.0f, 30.0f);
+	glVertex3f(15.0f,0.0f,30.0f);
+
+	glVertex3f(15.0f,0.0f,30.0f);
+	glVertex3f(0.0f, 15.0f, 30.0f);
+	glVertex3f(0.0f, 0.0f, 60.0f);
+
+	glVertex3f(0.0f, 0.0f, 60.0f);
+	glVertex3f(0.0f, 15.0f, 30.0f);
+	glVertex3f(-15.0f,0.0f,30.0f);
+
+	// 第二种颜色
+	glColor3ub(192,192,192);
+
+	glVertex3f(-15.0f,0.0f,30.0f);
+	glVertex3f(0.0f, 15.0f, 30.0f);
+	glVertex3f(0.0f, 0.0f, -56.0f);
+
+	glVertex3f(0.0f, 0.0f, -56.0f);
+	glVertex3f(0.0f, 15.0f, 30.0f);
+	glVertex3f(15.0f,0.0f,30.0f);	
+
+	glVertex3f(15.0f,0.0f,30.0f);
+	glVertex3f(-15.0f, 0.0f, 30.0f);
+	glVertex3f(0.0f, 0.0f, -56.0f);
+
+	// 第三种颜色
+	glColor3ub(64,64,64);
+
+	glVertex3f(0.0f,2.0f,27.0f);
+	glVertex3f(-60.0f, 2.0f, -8.0f);
+	glVertex3f(60.0f, 2.0f, -8.0f);
+
+	glVertex3f(60.0f, 2.0f, -8.0f);
+	glVertex3f(0.0f, 7.0f, -8.0f);
+	glVertex3f(0.0f,2.0f,27.0f);
+
+	glVertex3f(60.0f, 2.0f, -8.0f);
+	glVertex3f(-60.0f, 2.0f, -8.0f);
+	glVertex3f(0.0f,7.0f,-8.0f);
+
+	glVertex3f(0.0f,2.0f,27.0f);
+	glVertex3f(0.0f, 7.0f, -8.0f);
+	glVertex3f(-60.0f, 2.0f, -8.0f);
+
+	// 第四种颜色
+	glColor3ub(255,255,0);
+
+	glVertex3f(-30.0f, -0.50f, -57.0f);
+	glVertex3f(30.0f, -0.50f, -57.0f);
+	glVertex3f(0.0f,-0.50f,-40.0f);
+
+	glVertex3f(0.0f,-0.5f,-40.0f);
+	glVertex3f(30.0f, -0.5f, -57.0f);
+	glVertex3f(0.0f, 4.0f, -57.0f);
+
+	glVertex3f(0.0f, 4.0f, -57.0f);
+	glVertex3f(-30.0f, -0.5f, -57.0f);
+	glVertex3f(0.0f,-0.5f,-40.0f);
+
+	glVertex3f(30.0f,-0.5f,-57.0f);
+	glVertex3f(-30.0f, -0.5f, -57.0f);
+	glVertex3f(0.0f, 4.0f, -57.0f);
+
+	// 第五种颜色
+	glColor3ub(255,0,0);
+
+	glVertex3f(0.0f,0.5f,-40.0f);
+	glVertex3f(3.0f, 0.5f, -57.0f);
+	glVertex3f(0.0f, 25.0f, -65.0f);
+
+	glVertex3f(0.0f, 25.0f, -65.0f);
+	glVertex3f(-3.0f, 0.5f, -57.0f);
+	glVertex3f(0.0f,0.5f,-40.0f);
+
+	glVertex3f(3.0f,0.5f,-57.0f);
+	glVertex3f(-3.0f, 0.5f, -57.0f);
+	glVertex3f(0.0f, 25.0f, -65.0f);
+
+	glEnd();
+}
 // 渲染场景
 void RenderScene()
 {
@@ -14,115 +127,14 @@ void RenderScene()
 	// 旋转当前矩阵
 	glRotatef(xRot, 1.0f, 0.0f, 0.0f);
 	glRotatef(yRot, 0.0f, 1.0f, 0.0f);
-	// 绘制飞机模型
-	glBegin(GL_TRIANGLES);
-		// 第一种颜色
-		glColor3ub(0, 255, 0);
-		glVertex3f(0.0f, 0.0f, 60.0f);
-		glVertex3f(-15.0f, 0.0f, 30.0f);
-		glVertex3f(15.0f,0.0f,30.0f);
-
-		glVertex3f(15.0f,0.0f,30.0f);
-		glVertex3f(0.0f, 15.0f, 30.0f);
-		glVertex3f(0.0f, 0.0f, 60.0f);
-
-		glVertex3f(0.0f, 0.0f, 60.0f);
-		glVertex3f(0.0f, 15.0f, 30.0f);
-		glVertex3f(-15.0f,0.0f,30.0f);
-
-		// 第二种颜色
-		glColor3ub(192,192,192);
-		glVertex3f(-15.0f,0.0f,30.0f);
-		glVertex3f(0.0f, 15.0f, 30.0f);
-		glVertex3f(0.0f, 0.0f, -56.0f);
-
-		glVertex3f(0.0f, 0.0f, -56.0f);
-		glVertex3f(0.0f, 15.0f, 30.0f);
-		glVertex3f(15.0f,0.0f,30.0f);	
-
-		glVertex3f(15.0f,0.0f,30.0f);
-		glVertex3f(-15.0f, 0.0f, 30.0f);
-		glVertex3f(0.0f, 0.0f, -56.0f);
-
-		// 第三种颜色
-		glColor3ub(64,64,64);
-		glVertex3f(0.0f,2.0f,27.0f);
-		glVertex3f(-60.0f, 2.0f, -8.0f);
-		glVertex3f(60.0f, 2.0f, -8.0f);
-
-		glVertex3f(60.0f, 2.0f, -8.0f);
-		glVertex3f(0.0f, 7.0f, -8.0f);
-		glVertex3f(0.0f,2.0f,27.0f);
-
-		glVertex3f(60.0f, 2.0f, -8.0f);
-		glVertex3f(-60.0f, 2.0f, -8.0f);
-		glVertex3f(0.0f,7.0f,-8.0f);
-
-		glVertex3f(0.0f,2.0f,27.0f);
-		glVertex3f(0.0f, 7.0f, -8.0f);
-		glVertex3f(-60.0f, 2.0f, -8.0f);
-
-		// 第四种颜色
-		glColor3ub(255,255,0);
-		glVertex3f(-30.0f, -0.50f, -57.0f);
-		glVertex3f(30.0f, -0.50f, -57.0f);
-		glVertex3f(0.0f,-0.50f,-40.0f);
-
-		glVertex3f(0.0f,-0.5f,-40.0f);
-		glVertex3f(30.0f, -0.5f, -57.0f);
-		glVertex3f(0.0f, 4.0f, -57.0f);
-
-		glVertex3f(0.0f, 4.0f, -57.0f);
-		glVertex3f(-30.0f, -0.5f, -57.0f);
-		glVertex3f(0.0f,-0.5f,-40.0f);
-
-		glVertex3f(30.0f,-0.5f,-57.0f);
-		glVertex3f(-30.0f, -0.5f, -57.0f);
-		glVertex3f(0.0f, 4.0f, -57.0f);
-
-		// 第五种颜色
-		glColor3ub(255,0,0);
-		glVertex3f(0.0f,0.5f,-40.0f);
-		glVertex3f(3.0f, 0.5f, -57.0f);
-		glVertex3f(0.0f, 25.0f, -65.0f);
-
-		glVertex3f(0.0f, 25.0f, -65.0f);
-		glVertex3f(-3.0f, 0.5f, -57.0f);
-		glVertex3f(0.0f,0.5f,-40.0f);
-
-		glVertex3f(3.0f,0.5f,-57.0f);
-		glVertex3f(-3.0f, 0.5f, -57.0f);
-		glVertex3f(0.0f, 25.0f, -65.0f);
-
-	glEnd();
+	// 
+	RenderPlane();
 	// 恢复矩阵状态
 	glPopMatrix();
 	// 交换缓冲区，显示画面
 	glutSwapBuffers();
 }
-// 设置渲染状态
-void SetupRC()
-{
-	// 启用深度检测
-	glEnable(GL_DEPTH_TEST);
-	// 启用遮挡剔除
-	glEnable(GL_CULL_FACE);
-	// 设置逆时针环绕为方面
-	glFrontFace(GL_CCW);
-	// 启用光照
-	glEnable(GL_LIGHTING);
-	// 指定环境光强度
-	GLfloat ambientLight[] = {1.0f, 1.0f, 1.0f, 1.0f};
-	// 设置光照模式，将ambientLight所指定的RGB强度值应用到环境光
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
-	// 启用颜色追踪
-	glEnable(GL_COLOR_MATERIAL);
-	// 设置多边形正面的材料属性，追踪glColor
-	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-	// 指定清除颜色
-	glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
-}
-
+// 窗口大小改变时的处理
 void ChangeSize(int w, int h)
 {
 	GLfloat nRange = 80.0f;
