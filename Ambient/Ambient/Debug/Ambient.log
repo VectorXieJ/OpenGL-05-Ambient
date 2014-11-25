@@ -1,26 +1,13 @@
-﻿生成启动时间为 2014-11-24 20:38:53。
-     1>项目“E:\__Codes\OpenGL\OpenGL-05-Ambient\Ambient\Ambient\Ambient.vcxproj”在节点 2 上(build 个目标)。
+﻿生成启动时间为 2014/11/25 8:57:50。
+     1>项目“G:\__Codes\__OpenGL\OpenGL-05-Ambient\Ambient\Ambient\Ambient.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
-         正在创建“Debug\Ambient.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+         正在对“Debug\Ambient.unsuccessfulbuild”执行 Touch 任务。
        ClCompile:
-         d:\Program Files (custom)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AmbientMain.cpp
+         e:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AmbientMain.cpp
          AmbientMain.cpp
-       ManifestResourceCompile:
-         所有输出均为最新。
-       Link:
-         d:\Program Files (custom)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\__Codes\OpenGL\OpenGL-05-Ambient\Ambient\Debug\Ambient.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Ambient.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\__Codes\OpenGL\OpenGL-05-Ambient\Ambient\Debug\Ambient.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\__Codes\OpenGL\OpenGL-05-Ambient\Ambient\Debug\Ambient.lib" /MACHINE:X86 Debug\Ambient.exe.embed.manifest.res
-         Debug\AmbientMain.obj
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\Ambient.exe.embed.manifest" /manifest Debug\Ambient.exe.intermediate.manifest
-         所有输出均为最新。
-       LinkEmbedManifest:
-         所有输出均为最新。
-         Ambient.vcxproj -> E:\__Codes\OpenGL\OpenGL-05-Ambient\Ambient\Debug\Ambient.exe
-       FinalizeBuildStatus:
-         正在删除文件“Debug\Ambient.unsuccessfulbuild”。
-         正在对“Debug\Ambient.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“E:\__Codes\OpenGL\OpenGL-05-Ambient\Ambient\Ambient\Ambient.vcxproj”(build 个目标)的操作。
+     1>g:\__codes\__opengl\opengl-05-ambient\ambient\headfile\gltools.h(22): fatal error C1083: 无法打开包括文件:“glut.h”: No such file or directory
+     1>已完成生成项目“G:\__Codes\__OpenGL\OpenGL-05-Ambient\Ambient\Ambient\Ambient.vcxproj”(build 个目标)的操作 - 失败。
 
-生成成功。
+生成失败。
 
-已用时间 00:00:00.72
+已用时间 00:00:01.38
