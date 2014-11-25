@@ -7,12 +7,12 @@ static GLfloat yRot = 0.0f;
 // 设置渲染状态
 void SetupRC()
 {
-	// 启用深度检测
-	glEnable(GL_DEPTH_TEST);
-	// 启用遮挡剔除
-	glEnable(GL_CULL_FACE);
-	// 设置逆时针环绕的一面为正面
+	// 启用深度测试
+	glEnable(GL_DEPTH_TEST);	
+	// 设置逆时针环绕的多边形为正面
 	glFrontFace(GL_CCW);
+	// 启用背面剔除
+	glEnable(GL_CULL_FACE);
 	// 启用光照计算
 	glEnable(GL_LIGHTING);
 	// 指定环境光强度（RGBA）
@@ -30,91 +30,91 @@ void SetupRC()
 // 绘制飞机模型
 void RenderPlane()
 {
-	// 三角形图元（？？）
+	// 三角形图元
 	glBegin(GL_TRIANGLES);
 
-	// 第一种颜色（绿色）
-	glColor3ub(0, 255, 0);
+		// 第一种颜色（绿色）
+		glColor3ub(0, 255, 0);
 
-	glVertex3f(0.0f, 0.0f, 60.0f);
-	glVertex3f(-15.0f, 0.0f, 30.0f);
-	glVertex3f(15.0f,0.0f,30.0f);
+		glVertex3f(0.0f, 0.0f, 60.0f);
+		glVertex3f(-15.0f, 0.0f, 30.0f);
+		glVertex3f(15.0f,0.0f,30.0f);
 
-	glVertex3f(15.0f,0.0f,30.0f);
-	glVertex3f(0.0f, 15.0f, 30.0f);
-	glVertex3f(0.0f, 0.0f, 60.0f);
+		glVertex3f(15.0f,0.0f,30.0f);
+		glVertex3f(0.0f, 15.0f, 30.0f);
+		glVertex3f(0.0f, 0.0f, 60.0f);
 
-	glVertex3f(0.0f, 0.0f, 60.0f);
-	glVertex3f(0.0f, 15.0f, 30.0f);
-	glVertex3f(-15.0f,0.0f,30.0f);
+		glVertex3f(0.0f, 0.0f, 60.0f);
+		glVertex3f(0.0f, 15.0f, 30.0f);
+		glVertex3f(-15.0f,0.0f,30.0f);
 
-	// 第二种颜色（灰色）
-	glColor3ub(192,192,192);
+		// 第二种颜色（灰色）
+		glColor3ub(192,192,192);
 
-	glVertex3f(-15.0f,0.0f,30.0f);
-	glVertex3f(0.0f, 15.0f, 30.0f);
-	glVertex3f(0.0f, 0.0f, -56.0f);
+		glVertex3f(-15.0f,0.0f,30.0f);
+		glVertex3f(0.0f, 15.0f, 30.0f);
+		glVertex3f(0.0f, 0.0f, -56.0f);
 
-	glVertex3f(0.0f, 0.0f, -56.0f);
-	glVertex3f(0.0f, 15.0f, 30.0f);
-	glVertex3f(15.0f,0.0f,30.0f);	
+		glVertex3f(0.0f, 0.0f, -56.0f);
+		glVertex3f(0.0f, 15.0f, 30.0f);
+		glVertex3f(15.0f,0.0f,30.0f);	
 
-	glVertex3f(15.0f,0.0f,30.0f);
-	glVertex3f(-15.0f, 0.0f, 30.0f);
-	glVertex3f(0.0f, 0.0f, -56.0f);
+		glVertex3f(15.0f,0.0f,30.0f);
+		glVertex3f(-15.0f, 0.0f, 30.0f);
+		glVertex3f(0.0f, 0.0f, -56.0f);
 
-	// 第三种颜色（深灰）
-	glColor3ub(64,64,64);
+		// 第三种颜色（深灰）
+		glColor3ub(64,64,64);
 
-	glVertex3f(0.0f,2.0f,27.0f);
-	glVertex3f(-60.0f, 2.0f, -8.0f);
-	glVertex3f(60.0f, 2.0f, -8.0f);
+		glVertex3f(0.0f,2.0f,27.0f);
+		glVertex3f(-60.0f, 2.0f, -8.0f);
+		glVertex3f(60.0f, 2.0f, -8.0f);
 
-	glVertex3f(60.0f, 2.0f, -8.0f);
-	glVertex3f(0.0f, 7.0f, -8.0f);
-	glVertex3f(0.0f,2.0f,27.0f);
+		glVertex3f(60.0f, 2.0f, -8.0f);
+		glVertex3f(0.0f, 7.0f, -8.0f);
+		glVertex3f(0.0f,2.0f,27.0f);
 
-	glVertex3f(60.0f, 2.0f, -8.0f);
-	glVertex3f(-60.0f, 2.0f, -8.0f);
-	glVertex3f(0.0f,7.0f,-8.0f);
+		glVertex3f(60.0f, 2.0f, -8.0f);
+		glVertex3f(-60.0f, 2.0f, -8.0f);
+		glVertex3f(0.0f,7.0f,-8.0f);
 
-	glVertex3f(0.0f,2.0f,27.0f);
-	glVertex3f(0.0f, 7.0f, -8.0f);
-	glVertex3f(-60.0f, 2.0f, -8.0f);
+		glVertex3f(0.0f,2.0f,27.0f);
+		glVertex3f(0.0f, 7.0f, -8.0f);
+		glVertex3f(-60.0f, 2.0f, -8.0f);
 
-	// 第四种颜色（黄色）
-	glColor3ub(255,255,0);
+		// 第四种颜色（黄色）
+		glColor3ub(255,255,0);
 
-	glVertex3f(-30.0f, -0.50f, -57.0f);
-	glVertex3f(30.0f, -0.50f, -57.0f);
-	glVertex3f(0.0f,-0.50f,-40.0f);
+		glVertex3f(-30.0f, -0.50f, -57.0f);
+		glVertex3f(30.0f, -0.50f, -57.0f);
+		glVertex3f(0.0f,-0.50f,-40.0f);
 
-	glVertex3f(0.0f,-0.5f,-40.0f);
-	glVertex3f(30.0f, -0.5f, -57.0f);
-	glVertex3f(0.0f, 4.0f, -57.0f);
+		glVertex3f(0.0f,-0.5f,-40.0f);
+		glVertex3f(30.0f, -0.5f, -57.0f);
+		glVertex3f(0.0f, 4.0f, -57.0f);
 
-	glVertex3f(0.0f, 4.0f, -57.0f);
-	glVertex3f(-30.0f, -0.5f, -57.0f);
-	glVertex3f(0.0f,-0.5f,-40.0f);
+		glVertex3f(0.0f, 4.0f, -57.0f);
+		glVertex3f(-30.0f, -0.5f, -57.0f);
+		glVertex3f(0.0f,-0.5f,-40.0f);
 
-	glVertex3f(30.0f,-0.5f,-57.0f);
-	glVertex3f(-30.0f, -0.5f, -57.0f);
-	glVertex3f(0.0f, 4.0f, -57.0f);
+		glVertex3f(30.0f,-0.5f,-57.0f);
+		glVertex3f(-30.0f, -0.5f, -57.0f);
+		glVertex3f(0.0f, 4.0f, -57.0f);
 
-	// 第五种颜色（红色）
-	glColor3ub(255,0,0);
+		// 第五种颜色（红色）
+		glColor3ub(255,0,0);
 
-	glVertex3f(0.0f,0.5f,-40.0f);
-	glVertex3f(3.0f, 0.5f, -57.0f);
-	glVertex3f(0.0f, 25.0f, -65.0f);
+		glVertex3f(0.0f,0.5f,-40.0f);
+		glVertex3f(3.0f, 0.5f, -57.0f);
+		glVertex3f(0.0f, 25.0f, -65.0f);
 
-	glVertex3f(0.0f, 25.0f, -65.0f);
-	glVertex3f(-3.0f, 0.5f, -57.0f);
-	glVertex3f(0.0f,0.5f,-40.0f);
+		glVertex3f(0.0f, 25.0f, -65.0f);
+		glVertex3f(-3.0f, 0.5f, -57.0f);
+		glVertex3f(0.0f,0.5f,-40.0f);
 
-	glVertex3f(3.0f,0.5f,-57.0f);
-	glVertex3f(-3.0f, 0.5f, -57.0f);
-	glVertex3f(0.0f, 25.0f, -65.0f);
+		glVertex3f(3.0f,0.5f,-57.0f);
+		glVertex3f(-3.0f, 0.5f, -57.0f);
+		glVertex3f(0.0f, 25.0f, -65.0f);
 
 	glEnd();
 }
@@ -152,7 +152,7 @@ void ChangeSize(int w, int h)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	// 设置（？？）
+	// 设置裁剪区域
 	if (w <= h) 
 		glOrtho (-nRange, nRange, -nRange*h/w, nRange*h/w, -nRange, nRange);
 	else 
