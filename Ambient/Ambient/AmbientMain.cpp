@@ -30,7 +30,7 @@ void SetupRC()
 // 绘制飞机模型
 void RenderPlane()
 {
-	// 三角形图元
+	// 三角形图元（？？）
 	glBegin(GL_TRIANGLES);
 
 	// 第一种颜色（绿色）
@@ -118,7 +118,8 @@ void RenderPlane()
 
 	glEnd();
 }
-// 渲染场景
+
+// 绘制场景
 void RenderScene()
 {
 	// 清除颜色缓冲区和深度缓冲区
@@ -140,27 +141,29 @@ void RenderScene()
 void ChangeSize(int w, int h)
 {
 	GLfloat nRange = 80.0f;
-	// Prevent a divide by zero
+	// 避免除0
 	if(h == 0)
 		h = 1;
 
-	// Set Viewport to window dimensions
+	// 设置视口大小
 	glViewport(0, 0, w, h);
 
-	// Reset coordinate system
+	// 重置投影矩阵
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	// Establish clipping volume (left, right, bottom, top, near, far)
+	// 设置（？？）
 	if (w <= h) 
 		glOrtho (-nRange, nRange, -nRange*h/w, nRange*h/w, -nRange, nRange);
 	else 
 		glOrtho (-nRange*w/h, nRange*w/h, -nRange, nRange, -nRange, nRange);
 
+	// 重置模型视图矩阵
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
 
+// 按键响应的处理
 void SpecialKeys(int key, int x, int y)
 {
 	if(key == GLUT_KEY_UP)
@@ -187,7 +190,7 @@ void SpecialKeys(int key, int x, int y)
 	if(key < -1.0f)
 		yRot = 355.0f;
 
-	// Refresh the Window
+	// 刷新窗口
 	glutPostRedisplay();
 }
 
@@ -196,11 +199,12 @@ int main(int argc, char* argv[])
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800,600);
-	glutCreateWindow("Ambient Light Jet");
+	glutCreateWindow("Ambient Light Demo");
 	glutReshapeFunc(ChangeSize);
 	glutSpecialFunc(SpecialKeys);
 	glutDisplayFunc(RenderScene);
 	SetupRC();
+
 	glutMainLoop();
 
 	return 0;
